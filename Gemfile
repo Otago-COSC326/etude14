@@ -16,6 +16,8 @@ gem 'etude2-rails', github: 'tinhtooaung/etude2'
 
 gem 'puma'
 
+gem 'rails_12factor', group: :production
+
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
