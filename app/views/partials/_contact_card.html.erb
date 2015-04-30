@@ -1,0 +1,49 @@
+<div class="panel panel-default contact-card">
+    <div class="panel-heading">
+        <h3 class="panel-title text-center"><a href="#"><%= contact_card.name%></a></h3>
+    </div>
+    <div class="panel-body">
+        <div class="text-center">
+            <img src="http://www.gravatar.com/avatar" alt="" class="img-thumbnail picture"/>
+        </div>
+    </div>
+    <table class="table table-striped table-responsive table-bordered">
+        <tr>
+            <td class="text-right">Email</td>
+            <td class="text-left">
+                <% if contact_card.emails.empty?%>
+                    N/A
+                <% else %>
+                    <%= contact_card.emails.first%>
+                <% end%>
+
+            </td>
+        </tr>
+        <tr>
+            <td class="text-right">Phone</td>
+            <td class="text-left">
+                <% if contact_card.phones.empty?%>
+                    N/A
+                <% else %>
+                    <%= contact_card.phones.first%>
+                <% end%>
+            </td>
+        </tr>
+    </table>
+    <div class="panel-footer">
+        <div class="text-right">
+            <a href="#" class="btn btn-primary btn-sm"
+               data-toggle="tooltip"
+               data-placement="top"
+               title="View details"><i class="fa fa-info-circle"></i></a>
+            <a href="#" class="btn btn-info btn-sm"
+               data-toggle="tooltip"
+               data-placement="top"
+               title="Edit"><i class="fa fa-edit"></i></a>
+            <a href="#" class="btn btn-danger btn-sm"
+               data-toggle="tooltip"
+               data-placement="top"
+               title="Delete"><i class="fa fa-trash-o"></i></a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,28 @@
+<!-- Modal -->
+<div class="modal fade" id="<%= (edit)?'edit':'add'%>-group-modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <form id="<%= (edit)?'edit':'add' %>-group-form">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title"><%= (edit)?'Edit':'Add'%> Group</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-danger" id="<%= (edit)?'edit':'add'%>-group-form-errors" style="display: none;"></div>
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="<%= (edit)?'edit':'add'%>-group-input-name" name="group[name]" placeholder="Enter Group Name"
+                               required/>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary"><%= (edit)?'Edit':'Add'%></button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

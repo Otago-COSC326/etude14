@@ -1,0 +1,20 @@
+<% current_group ||= nil%>
+<% i ||= -1%>
+<li class="list-group-item <%= 'active' if (current_group.nil? && i == 0) || current_group == group %>">
+    <div class="pull-left" style="padding-top: 5px;">
+        <a href="<%= root_path(group_id: group.id) %>" id="<%= "group-name#{group.id}"%>"><%= group.name %></a>
+    </div>
+    <div class="pull-right">
+        <% unless group.name == 'All' %>
+            <button type="button" class="btn btn-default btn-sm group-edit-btn" id="<%= "group-edit-btn#{group.id}"%>"
+                    data-id="<%= group.id%>" data-name="<%= group.name%>">
+                <i class="fa fa-edit"></i>
+            </button>
+            <button type="button" class="btn btn-danger btn-sm group-delete-btn" id="<%= "group-delete-btn#{group.id}"%>"
+                    data-id="<%= group.id%>" data-name="<%= group.name%>">
+                <i class="fa fa-trash-o"></i>
+            </button>
+        <% end%>
+    </div>
+    <div class="clearfix"></div>
+</li>

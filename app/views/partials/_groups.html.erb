@@ -1,0 +1,22 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <div class="pull-left">
+            <h3 class="panel-title" style="margin-top: 5px;">Groups</h3>
+        </div>
+        <div class="pull-right">
+            <button type="button" class="btn btn-default btn-sm"
+                    data-toggle="modal" data-target="#add-group-modal">
+                <i class="fa fa-plus-circle"></i>&nbsp;Add Group
+            </button>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <ul class="list-group groups">
+        <% groups.each.with_index do |group, i| %>
+            <%= render partial: 'partials/group_item', locals: {group: group, current_group: current_group, i: i} %>
+        <% end %>
+    </ul>
+</div>
+
+<%= render partial: 'partials/add_group', locals:{edit: false} %>
+<%= render partial: 'partials/add_group', locals:{edit: true} %>

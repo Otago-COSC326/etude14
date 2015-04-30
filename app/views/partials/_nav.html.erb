@@ -15,7 +15,6 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <% if account_signed_in? %>
-                    <li><a href="#">My Account</a></li>
                     <li><a href="<%= destroy_account_session_path %>"><i class="fa fa-sign-out"></i>&nbsp;Logout</a></li>
                 <% else %>
                     <li><a href="<%= new_account_session_path %>"><i class="fa fa-sign-in"></i>&nbsp;Sign in</a></li>
