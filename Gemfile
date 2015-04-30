@@ -10,6 +10,8 @@ gem 'jbuilder', '~> 2.0'
 gem 'bcrypt', '~> 3.1.7'
 gem 'devise'
 
+gem 'etude2-rails', github: 'tinhtooaung/etude2'
+
 gem 'puma'
 
 group :development, :test do
@@ -17,5 +19,8 @@ group :development, :test do
   gem 'web-console', '~> 2.0'
   gem 'dotenv-rails'
   gem 'spring'
+
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
 end
 
