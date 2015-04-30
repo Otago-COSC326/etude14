@@ -4,5 +4,6 @@ class Contact < ActiveRecord::Base
   belongs_to :group, counter_cache: true
 
   validates :phones, phone_number: true
+  validates :emails, email: true
 
 end
