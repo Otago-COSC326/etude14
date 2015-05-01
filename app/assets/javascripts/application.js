@@ -1,3 +1,5 @@
+
+
 // This is a manifest file that'll be compiled into application.js, which will include all the files
 // listed below.
 //
@@ -17,12 +19,10 @@
 //= require toastr.js
 //= require jquery.serialize-object.min.js
 //= require jquery.confirm.js
-//= require contact
 //= require home_group
+//= require contact
 //= require_tree .
-
 
 $(function () {
     $('[data-toggle="tooltip"]').tooltip();
 });
-
