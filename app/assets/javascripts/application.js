@@ -59,7 +59,7 @@ function ready(){
 
     function setupGroupDeleteBtn(deleteGroupBtn){
         deleteGroupBtn.confirm({
-            text: "Really want to delete? <br> All of the contacts under the group will be move to Default 'All' Group.",
+            text: "Really want to delete? <br> All of the contacts under the group will also be deleted.",
             title: "Confirmation required",
             confirm: function(button) {
                 var groupId = button.data('id');
