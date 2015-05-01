@@ -42,6 +42,8 @@ class GroupsController < SecuredController
         Contact.where(group: group).all.each do|contact|
           contact.group = default_group
           contact.save! #not very good to update here.
+          default_group.contacts << contact
+          default_group.save!
         end
       end
       group.reload.destroy!
