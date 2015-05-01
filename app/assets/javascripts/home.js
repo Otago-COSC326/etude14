@@ -15,7 +15,7 @@ $(document).ready(function(){
         posting.success(function(data){
             var groupContainer = $('.groups');
             groupContainer.fadeIn(300, function() { $(this).append(data.html); });
-            groupContainer.on('click', '#group-delete-btn' + data.group.id, deleteGroup);
+            setupGroupDeleteBtn($('#group-delete-btn' + data.group.id));
             groupContainer.on('click', '#group-edit-btn' + data.group.id, editGroup);
             $('#add-group-modal').modal('hide');
             toastr.success(postData.group.name + ' is added');
@@ -28,21 +28,33 @@ $(document).ready(function(){
     });
 
 
-    function deleteGroup() {
-        var deleteGroupBtn = $(this);
-        var groupId = deleteGroupBtn.data('id');
-        var groupName = deleteGroupBtn.data('name');
-        $.ajax({
-            url: '/groups/' + groupId,
-            method: 'DELETE'
-        }).success(function(){
-            toastr.success(groupName + ' is deleted');
-            deleteGroupBtn.closest('li').fadeOut(300, function() { $(this).remove(); });
-        }).error(function(data){
-            toastr.error('Error deleting ' + groupName + '. Please try again later.');
+    function setupGroupDeleteBtn(deleteGroupBtn){
+        deleteGroupBtn.confirm({
+            text: "Really want to delete? <br> All of the contacts under the group will be move to Default 'All' Group.",
+            title: "Confirmation required",
+            confirm: function(button) {
+                var groupId = button.data('id');
+                var groupName = button.data('name');
+                $.ajax({
+                    url: '/groups/' + groupId,
+                    method: 'DELETE'
+                }).success(function(){
+                    toastr.success(groupName + ' is deleted');
+                    deleteGroupBtn.closest('li').fadeOut(300, function() { $(this).remove(); });
+                }).error(function(data){
+                    toastr.error('Error deleting ' + groupName + '. Please try again later.');
+                });
+            },
+            cancel: function(button) {},
+            confirmButton: "Delete",
+            cancelButton: "Cancel",
+            post: false,
+            confirmButtonClass: "btn-danger",
+            cancelButtonClass: "btn-default",
+            dialogClass: "modal-dialog" // Bootstrap classes for large modal
         });
     }
-    $('.group-delete-btn').click(deleteGroup);
+    setupGroupDeleteBtn($('.group-delete-btn'));
 
 
     var editGroup = function(){
@@ -82,5 +94,4 @@ $(document).ready(function(){
             errors.append(data.responseText);
         });
     });
-
 });
