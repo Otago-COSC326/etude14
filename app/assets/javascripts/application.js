@@ -17,8 +17,8 @@
 //= require toastr.js
 //= require jquery.serialize-object.min.js
 //= require jquery.confirm.js
-//= require home_group
 //= require contact
+//= require home_group
 //= require_tree .
 
 

@@ -47,3 +47,21 @@
         </div>
     </div>
 </div>
+
+<script>
+    $('.btn-delete-contact').confirm({
+        text: "Really want to delete?",
+        title: "Confirmation required",
+        confirm: function(button) {
+            var contactId = button.data('id');
+            location.href = '/contacts/delete/' + contactId
+        },
+        cancel: function(button) {},
+        confirmButton: "Delete",
+        cancelButton: "Cancel",
+        post: false,
+        confirmButtonClass: "btn-danger",
+        cancelButtonClass: "btn-default",
+        dialogClass: "modal-dialog modal-sm" // Bootstrap classes for large modal
+    });
+</script>

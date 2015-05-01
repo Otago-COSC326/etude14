@@ -7,6 +7,7 @@ function ready(){
     var addGroupForm = $('#add-group-form');
     addGroupForm.submit(function(e){
         e.preventDefault();
+        e.stopImmediatePropagation();
         var postData = $(this).serializeObject();
         var posting = $.post('/groups', postData);
         var errors = $('#add-group-form-errors');
@@ -19,12 +20,13 @@ function ready(){
             groupContainer.on('click', '#group-edit-btn' + data.group.id, editGroup);
             $('#add-group-modal').modal('hide');
             toastr.success(postData.group.name + ' is added');
-            addGroupForm[0].reset()
+            addGroupForm[0].reset();
         });
         posting.error(function(data){
             errors.show();
             errors.append(data.responseText);
         });
+        return false;
     });
 
 
@@ -72,6 +74,7 @@ function ready(){
     var editGroupForm = $('#edit-group-form');
     editGroupForm.submit(function(e){
         e.preventDefault();
+        e.stopImmediatePropagation();
         var errors = $('#edit-group-form-errors');
         errors.hide();
         errors.empty();
@@ -88,12 +91,13 @@ function ready(){
             toastr.success(groupName + ' is edited');
             $('#group-name' + editNameInput.data('id')).text(groupName);
             $('#edit-group-modal').modal('hide');
+            $('.group-edit-btn').data('name', groupName);
             editGroupForm[0].reset()
-
         }).error(function(data){
             errors.show();
             errors.append(data.responseText);
         });
+        return false;
     });
 }
 
