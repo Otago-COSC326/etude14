@@ -4,7 +4,7 @@
     </div>
     <div class="panel-body">
         <div class="text-center">
-            <img src="http://www.gravatar.com/avatar" alt="" class="img-thumbnail picture"/>
+            <img src="http://www.gravatar.com/avatar/<%= Digest::MD5.hexdigest(contact_card.emails[0]) unless contact_card.emails.empty?%>" alt="" class="img-thumbnail picture"/>
         </div>
     </div>
     <table class="table table-striped table-responsive table-bordered">
@@ -16,7 +16,6 @@
                 <% else %>
                     <%= contact_card.emails.first%>
                 <% end%>
-
             </td>
         </tr>
         <tr>
@@ -32,17 +31,18 @@
     </table>
     <div class="panel-footer">
         <div class="text-right">
-            <a href="#" class="btn btn-primary btn-sm"
+            <a href="<%= contact_path contact_card%>" class="btn btn-primary btn-sm"
                data-toggle="tooltip"
                data-placement="top"
                title="View details"><i class="fa fa-info-circle"></i></a>
-            <a href="#" class="btn btn-info btn-sm"
+            <a href="<%= edit_contact_path contact_card%>" class="btn btn-info btn-sm"
                data-toggle="tooltip"
                data-placement="top"
                title="Edit"><i class="fa fa-edit"></i></a>
-            <a href="#" class="btn btn-danger btn-sm"
+            <a href="#" class="btn btn-danger btn-sm btn-delete-contact"
                data-toggle="tooltip"
                data-placement="top"
+               data-id="<%= contact_card.id%>"
                title="Delete"><i class="fa fa-trash-o"></i></a>
         </div>
     </div>

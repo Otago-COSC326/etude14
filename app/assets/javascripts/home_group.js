@@ -2,7 +2,7 @@
  * Created by tinhtooaung on 30/04/15.
  */
 
-$(document).ready(function(){
+function ready(){
 
     var addGroupForm = $('#add-group-form');
     addGroupForm.submit(function(e){
@@ -41,6 +41,7 @@ $(document).ready(function(){
                 }).success(function(){
                     toastr.success(groupName + ' is deleted');
                     deleteGroupBtn.closest('li').fadeOut(300, function() { $(this).remove(); });
+                    location.href = '/'
                 }).error(function(data){
                     toastr.error('Error deleting ' + groupName + '. Please try again later.');
                 });
@@ -94,4 +95,7 @@ $(document).ready(function(){
             errors.append(data.responseText);
         });
     });
-});
+}
+
+$(document).ready(ready);
+$(document).on('page:load', ready);

@@ -37,6 +37,13 @@ class GroupsController < SecuredController
     if group.nil?
       render status: 400
     else
+      if group.contacts.count != 0
+        default_group = Group.find_by_name('All')
+        group.contacts.each do|contact|
+          contact.group = default_group
+          contact.save #not very good to update here.
+        end
+      end
       group.destroy!
       respond_with nil
     end

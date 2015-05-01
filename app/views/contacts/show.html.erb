@@ -1,0 +1,81 @@
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-offset-2 col-lg-8">
+                <div class="panel panel-default contact-card">
+                    <div class="panel-heading">
+                        <h3 class="panel-title text-center"><a href="#"><%= @contact.name%></a></h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="text-center">
+                            <img src="http://www.gravatar.com/avatar/<%= Digest::MD5.hexdigest(@contact.emails[0]) unless @contact.emails.empty?%>"
+                                 alt="" class="img-thumbnail picture"/>
+                        </div>
+                    </div>
+                    <table class="table table-striped table-responsive table-bordered">
+                        <tr>
+                            <td class="text-right"><p style="margin-top: 10px;">Email</p></td>
+                            <td class="text-left">
+                                <% if @contact.emails.empty?%>
+                                    <p style="margin-top: 10px;">N/A</p>
+                                <% else %>
+                                    <ul class="list-group">
+                                        <% @contact.emails.each do |email|%>
+                                            <li class="list-group-item"><%= email%></li>
+                                        <% end%>
+                                    </ul>
+                                <% end %>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-right"><p style="margin-top: 10px;">Phone</p></td>
+                            <td class="text-left">
+                                <% if @contact.phones.empty?%>
+                                    <p style="margin-top: 10px;">N/A</p>
+                                <% else %>
+                                    <ul class="list-group">
+                                        <% @contact.phones.each do |phone|%>
+                                            <li class="list-group-item"><%= phone%></li>
+                                        <% end%>
+                                    </ul>
+                                <% end %>
+
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="panel-footer">
+                        <div class="text-right">
+                            <a href="<%= edit_contact_path @contact%>" class="btn btn-info btn-sm"
+                               data-toggle="tooltip"
+                               data-placement="top"
+                               title="Edit"><i class="fa fa-edit"></i></a>
+                            <a href="<%= contacts_get_delete_path @contact%>" class="btn btn-danger btn-sm btn-delete-contact"
+                               data-toggle="tooltip"
+                               data-placement="top"
+                               data-id="<%= @contact.id%>"
+                               title="Delete"><i class="fa fa-trash-o"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    $('.btn-delete-contact').confirm({
+        text: "Really want to delete?",
+        title: "Confirmation required",
+        confirm: function(button) {
+            var contactId = button.data('id');
+            location.href = '/contacts/delete/' + contactId
+        },
+        cancel: function(button) {},
+        confirmButton: "Delete",
+        cancelButton: "Cancel",
+        post: false,
+        confirmButtonClass: "btn-danger",
+        cancelButtonClass: "btn-default",
+        dialogClass: "modal-dialog modal-sm" // Bootstrap classes for large modal
+    });
+</script>

@@ -6,7 +6,7 @@ class PhoneNumberValidator < ActiveModel::EachValidator
         begin
           PhoneValidator::Validator.validate(value)
         rescue PhoneValidator::Validator::ValidationError => e
-          record.errors[attribute] << (options[:message] || "#{value}: #{e.message}")
+          record.errors[attribute] << (options[:message] || "(#{value}): #{e.message.capitalize!}")
         end
       end
 
