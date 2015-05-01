@@ -39,7 +39,7 @@ class GroupsController < SecuredController
     else
       if group.contacts.count != 0
         default_group = Group.find_by_name('All')
-        group.contacts.each do|contact|
+        Contact.where(group: group).all.each do|contact|
           contact.group = default_group
           contact.save! #not very good to update here.
         end
