@@ -5,8 +5,8 @@
 
 function ready() {
 
-    $('.btn-add-email-field').click(addNewEmailField);
-    $('.btn-remove-email-field').click(deletePhoneField);
+    $('.btn-add-email-field').off('click').on('click',addNewEmailField);
+    $('.btn-remove-email-field').off('click').on('click',deletePhoneField);
     function addNewEmailField(){
         var container = $('.email-fields');
         var index = container.children().length;
@@ -37,8 +37,8 @@ function ready() {
 
 
 
-    $('.btn-add-phone-field').click(addNewPhoneField);
-    $('.btn-remove-phone-field').click(deletePhoneField);
+    $('.btn-add-phone-field').off('click').on('click',addNewPhoneField);
+    $('.btn-remove-phone-field').off('click').on('click',deletePhoneField);
     function addNewPhoneField(){
         var container = $('.phone-fields');
         var index = container.children().length;

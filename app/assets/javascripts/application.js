@@ -14,6 +14,11 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap-sprockets
+//= require toastr.js
+//= require jquery.serialize-object.min.js
+//= require jquery.confirm.js
+//= require home_group
+//= require contact
 //= require_tree .
 
 
