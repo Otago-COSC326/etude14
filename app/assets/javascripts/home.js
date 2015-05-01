@@ -16,6 +16,7 @@ $(document).ready(function(){
             var groupContainer = $('.groups');
             groupContainer.fadeIn(300, function() { $(this).append(data.html); });
             groupContainer.on('click', '#group-delete-btn' + data.group.id, deleteGroup);
+            groupContainer.on('click', '#group-edit-btn' + data.group.id, editGroup);
             $('#add-group-modal').modal('hide');
             toastr.success(postData.group.name + ' is added');
             addGroupForm[0].reset()
@@ -44,16 +45,16 @@ $(document).ready(function(){
     $('.group-delete-btn').click(deleteGroup);
 
 
-    $('.group-edit-btn').click(function(){
+    var editGroup = function(){
         $('#edit-group-modal').modal('show');
-
         var editGroupBtn = $(this);
         var groupId = editGroupBtn.data('id');
         var groupName = editGroupBtn.data('name');
         var editNameInput = $('#edit-group-input-name');
         editNameInput.val(groupName);
         editNameInput.attr('data-id', groupId);
-    });
+    };
+    $('.group-edit-btn').click(editGroup);
 
     var editGroupForm = $('#edit-group-form');
     editGroupForm.submit(function(e){
