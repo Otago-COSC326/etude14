@@ -7,7 +7,7 @@ function ready(){
     var addGroupForm = $('#add-group-form');
     addGroupForm.submit(function(e){
         e.preventDefault();
-        //e.stopImmediatePropagation();
+        e.stopImmediatePropagation();
         var postData = $(this).serializeObject();
         var posting = $.post('/groups', postData);
         var errors = $('#add-group-form-errors');
@@ -74,7 +74,7 @@ function ready(){
     var editGroupForm = $('#edit-group-form');
     editGroupForm.submit(function(e){
         e.preventDefault();
-        //e.stopImmediatePropagation();
+        e.stopImmediatePropagation();
         var errors = $('#edit-group-form-errors');
         errors.hide();
         errors.empty();
