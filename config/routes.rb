@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   devise_scope :account do
     resources :groups, except: [:edit, :new], controller: 'groups'
+    resources :contacts, except: [:index]
     root 'devise/sessions#new'
   end
 end

@@ -11,7 +11,6 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'devise'
 gem 'bootstrap-sass', '~> 3.3.4'
 gem 'font-awesome-sass', '~> 4.3.0'
-gem 'angularjs-rails'
 
 gem 'etude2-rails', github: 'tinhtooaung/etude2'
 
