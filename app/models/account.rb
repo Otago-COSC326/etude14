@@ -4,4 +4,12 @@ class Account < ActiveRecord::Base
 
   has_many :groups
 
+  def self.setup_account account
+    if account.groups.count == 0
+      account.groups.create name: 'All'
+      account.reload
+    end
+    account
+  end
+
 end
